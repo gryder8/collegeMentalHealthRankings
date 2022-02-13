@@ -20,7 +20,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse apiCallOutput;
   List<CollegeMapRecord> algoliaSearchResults = [];
   TextEditingController textController;
-  ApiCallResponse outputTim;
+  //ApiCallResponse outputTim;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -28,7 +28,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     super.initState();
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      outputTim = await GetInfoCall.call(
+      apiCallOutput = await GetInfoCall.call(
         id: 1,
       );
     });
@@ -477,14 +477,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               1, 0),
                                                       child: AutoSizeText(
                                                         valueOrDefault<String>(
-                                                          '${valueOrDefault<String>(
+                                                          '${100 - valueOrDefault<int>(
                                                             getJsonField(
                                                               (apiCallOutput
                                                                       ?.jsonBody ??
                                                                   ''),
                                                               r'''$.depression_stats''',
-                                                            ).toString(),
-                                                            '10',
+                                                            ),
+                                                            10,
                                                           )}%',
                                                           '10%',
                                                         ),
@@ -514,7 +514,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     decoration: BoxDecoration(),
                                                     child:
                                                         LinearPercentIndicator(
-                                                            percent:
+                                                            percent:1-
                                                                 getJsonField(
                                                               (apiCallOutput
                                                                       ?.jsonBody ??
@@ -561,7 +561,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           AlignmentDirectional(
                                                               -1, 0),
                                                       child: AutoSizeText(
-                                                        'Suicide Rates:',
+                                                        'Anxiety Rates:',
                                                         textAlign:
                                                             TextAlign.start,
                                                         style:
@@ -592,14 +592,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               1, 0),
                                                       child: AutoSizeText(
                                                         valueOrDefault<String>(
-                                                          '${valueOrDefault<String>(
+                                                          '${100 - valueOrDefault<int>(
                                                             getJsonField(
                                                               (apiCallOutput
                                                                       ?.jsonBody ??
                                                                   ''),
                                                               r'''$.suicide_rate''',
-                                                            ).toString(),
-                                                            '100',
+                                                            ),
+                                                            100,
                                                           )}%',
                                                           '100%',
                                                         ),
@@ -629,7 +629,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     decoration: BoxDecoration(),
                                                     child:
                                                         LinearPercentIndicator(
-                                                            percent:
+                                                            percent:1-
                                                                 getJsonField(
                                                               (apiCallOutput
                                                                       ?.jsonBody ??
@@ -788,7 +788,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           AlignmentDirectional(
                                                               -1, 0),
                                                       child: AutoSizeText(
-                                                        'Cost of Living and Student Debt:',
+                                                        'Student Debt:',
                                                         textAlign:
                                                             TextAlign.start,
                                                         style:
@@ -819,14 +819,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               1, 0),
                                                       child: AutoSizeText(
                                                         valueOrDefault<String>(
-                                                          '${valueOrDefault<String>(
+                                                          '${100 - valueOrDefault<int>(
                                                             getJsonField(
                                                               (apiCallOutput
                                                                       ?.jsonBody ??
                                                                   ''),
                                                               r'''$.cost_of_living_and_debt''',
-                                                            ).toString(),
-                                                            '40',
+                                                            ),
+                                                            40,
                                                           )}%',
                                                           '40%',
                                                         ),
@@ -856,7 +856,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     decoration: BoxDecoration(),
                                                     child:
                                                         LinearPercentIndicator(
-                                                            percent:
+                                                            percent:1-
                                                                 getJsonField(
                                                               (apiCallOutput
                                                                       ?.jsonBody ??
