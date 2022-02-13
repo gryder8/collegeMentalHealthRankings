@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -19,11 +20,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse apiCallOutput;
   List<CollegeMapRecord> algoliaSearchResults = [];
   TextEditingController textController;
+  ApiCallResponse outputTim;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      outputTim = await GetInfoCall.call(
+        id: 1,
+      );
+    });
+
     textController = TextEditingController();
   }
 
